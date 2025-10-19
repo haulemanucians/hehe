@@ -64,13 +64,14 @@
 
 <style>
   body {
-    margin: 0;
-    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
-    font-family: "Poppins", "Comic Sans MS", sans-serif;
-    color: #ffffff;
-    text-align: center;
-    overflow-x: hidden;
-  }
+  margin: 0;
+ background: linear-gradient(135deg, #ffe6f0, #ffd6e8, #ffcce0);
+  font-family: "Poppins", "Comic Sans MS", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
   h1 {
     margin-top: 30px;
     font-size: 2em;
@@ -195,16 +196,20 @@ document.querySelector("footer b:first-child").textContent = YOUR_NAME;
 document.querySelector("footer b:last-child").textContent = CRUSH_NAME;
 
 const MEMES = [
-  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/481132729_617360261047866_6784680533306923938_n.jpg?...",
-  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/481676750_617360297714529_5246868493535605927_n.jpg?...",
-  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/481262162_618017810982111_4427432798943403002_n.jpg?..."
+  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/488695023_646138874836671_1305152692010668438_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFQlTYOvGOAoGQYR57pbA5oSiGZ6BC4PihKIZnoELg-KOgRa4jG3AzyfKSGzrD9U46pnHfiENiGmaHipeKy5Cr7&_nc_ohc=NZ-2xDvSoTsQ7kNvwHxwfhH&_nc_oc=Admd429opZC8VxiwzoZ7oW7RuUPlFOZ47ua1Yoz9ch_wHM5TxLuYellI3N7sgnQv95I&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=6EwSFiqmiIZQboOLoBN8JA&oh=00_AffQ01HCuhZcAZIeFAtG5xBD2mao2kcp952uxEfOIyb-Gg&oe=68FB1D95",
+  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/488671542_646139904836568_4046772660864461441_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEPrObFB-MtGOlP4Kl1zyfyyUqhp6TFdXDJSqGnpMV1cCE2rdatWJByYSfmk_qBhhHuEhlJnMBkWN4yeS6VF-P8&_nc_ohc=yyrVD7tmrRYQ7kNvwGT45Nf&_nc_oc=AdmGJxynOSoZAS4mWhDSy5ypvqLko_waShycKiK1wPDDmLsJffeV6V0OJNTa15x6WkQ&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=s3XlpodngJBYnstPJP_wNw&oh=00_Affy1XY0MK-5OlDwvkaFcse9NotYdWfhFMWFRtcbXocHeQ&oe=68FB0ABE",
+  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/488749254_646138791503346_3598731904783559420_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEUVDNac-ndeb5qzWAz86C6ToC8tklwXKZOgLy2SXBcpsU064E9VcU0JggQxMoKP3wE4HyU_VLjv8enjrVPzXA5&_nc_ohc=UhRXYE0GM50Q7kNvwFnJjqo&_nc_oc=Adk-qz13-IUo8JCtCmhFGz4Zwwg58JZNVgkL7vrsyZbNvSJnKKdkk61wUihDkreLcGA&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=86PDEF2SfN1tC9FmVU8Hpg&oh=00_Afdn7p7hyXiG-s-1Js9wXFM79uwRXXNf3sAnWAeftZ4LCg&oe=68FB16FC",
+  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/489295786_646141261503099_259845747090612260_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE6zXSJLGn8mvRJbzSi5FtrmFylIAE-cHeYXKUgAT5wd8W0A3Ncl6QrtrbeexSOkcTjKnYe7v7sgNLiFUCxWXeY&_nc_ohc=pWDMS6xOOdgQ7kNvwGsVNHC&_nc_oc=AdnH9EY04rcVqad-QkMSl8Kja9c6366Quzig8CjUe_F1Deb-tGenDwU1_EVD-j94JPU&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=d7eL4WfS1wuDCBeJqtUVJw&oh=00_AffuuQASFpUFF11zVqT_GDlAG1jU56s29ZRRutnLAGV8JQ&oe=68FB2977",
+  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/488768652_646140638169828_3370787654422686823_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGf3YwQID9MH8p3FwC3WSsQ2XAQ3dbUTRvZcBDd1tRNGygKLF9pqEn3KBvtHNhsxLrALvARDbL4Vq48I0LfjVkT&_nc_ohc=NRvTPomK0CQQ7kNvwFYxe5S&_nc_oc=AdmgVwVFlXsFLDduTCSnEJS6Hx-5oG1iOleavCsGfWBDBzBMz9tp0Y0Fg302xavq28s&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=Jy6zU6d1XB_3UrRFtIgZ2A&oh=00_Afd6fnXWBvbUUhoy5q2IJUSTrAtElacfvk5WByVU35p2Eg&oe=68FB08C4",
+  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/488906413_646139328169959_9018754688377672738_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGEAPFlOO4PDxL_YCXZOppDlyyPB6Ul1PeXLI8HpSXU9zFa3jveXUTQ1semrNeYaWe8v5nH2CO_V8lKCe31_5Sh&_nc_ohc=jwuJMym_ocIQ7kNvwGmwmD7&_nc_oc=AdmuVaFGSeA2NazhUdOqA3hGvMCFTHOiLhbBfJRI2-JpNc_0lyy4Fec8XSSveEX4-NU&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=ISCtQU-oepgBZMfwRE5Plw&oh=00_Afdy8KlvGGuLoCXdbzPsgSvCJ7WvprzcgDkZWRQkbjiL8Q&oe=68FB25AC",
+  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/488711688_646141338169758_4019571971981158640_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG_ywEzUPVmtyJZACYEpvM8U0fUnz8HiO9TR9SfPweI74tp-Megg2Bcp6Ovp5DIomOvaI21QfKFpjSdRO3e-AEF&_nc_ohc=eVUZ95C3-KUQ7kNvwG0yL87&_nc_oc=AdlZYy5Reh0JTMjL6wOSXO9LZGBzZO6GeGJU8IFuJjslrc18CNL7ObKv_VfvGY6v2FE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=NlmeWNfBIKqxA4CLoMdHaA&oh=00_AfcgsewQcAJshslGd_ThIsTKwN-sC6YE7szTqNTYK7pZKw&oe=68FB0CF4",
+
 ];
 const WISHES = [
-  "Chúc em 20/10 rực rỡ, chill như gradient nền này 😎",
-  "Mong ngày hôm nay của em sẽ thật xin sò nha 💙",
-  "Hy vọng em sẽ luôn xinh xắn như đám mèo này nha 😆",
   "20/10 anh không biết tặng gì hợp, chỉ biết viết cái web cùi bắp này thui 💫",
-  "Chúc em luôn vui, luôn đẹp nhá 😍",
+  "Để tụi nhỏ tặng em mấy bó hoa thay anh nhá 😆",
+  "Mong ngày hôm nay của em sẽ thật xin sò nha 💙",
+  "Chúc em luôn vui tươi, luôn xinh đẹp nhá 😍",
   "Mỗi meme là một nụ cười, hy vọng em sẽ luôn cười tươi như mấy meme này 😝",
   "Chúc em ngày 20/10 đáng nhớ — còn nhớ ai thì tùy em 😉",
   "Chúc em luôn được trân trọng — không chỉ hôm nay mà là mỗi ngày 🥹"
@@ -225,17 +230,18 @@ function playRandomSound() {
   sound.play();
 }
 
-function createFloatingMeme() {
+function createFloatingMeme() { 
   const meme = document.createElement("div");
-  meme.className = "floating-meme";
-  meme.style.left = Math.random() * 90 + "vw";
-  meme.style.animationDuration = (6 + Math.random() * 3) + "s";
-  const img = document.createElement("img");
-  img.src = random(MEMES);
-  meme.appendChild(img);
-  document.body.appendChild(meme);
-  setTimeout(()=>meme.remove(), 9000);
-}
+   meme.className = "floating-meme"; 
+   meme.style.left = Math.random() * 90 + "vw";
+    meme.style.animationDuration = (6 + Math.random() * 3) + "s"; 
+    const img = document.createElement("img"); 
+    img.src = random(MEMES); 
+    meme.appendChild(img); 
+    document.body.appendChild(meme); 
+    setTimeout(()=>meme.remove(), 9000); } 
+    document.getElementById("btnGift").addEventListener("click", ()=>{ img.src = random(MEMES); 
+    text.textContent = random(WISHES); playRandomSound(); createFloatingMeme(); }); setInterval(createFloatingMeme, 2500);
 
 /* 🎆 Pháo hoa */
 function createFirework() {
