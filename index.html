@@ -4,6 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>🥰 20/10 🥰</title>
+<!-- 🎶 Nhạc nền nhẹ nhàng -->
+<audio id="bg-music" autoplay>
+  <source src="cute.mp4" >
+  Trình duyệt của bạn không hỗ trợ thẻ audio.
+</audio>
+
+<!-- Nút bật/tắt nhạc -->
+<button id="music-toggle" style="
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 2000;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+">Bật nhạc</button>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const btn = document.getElementById('music-toggle');
+  audio.volume = 0.4; // âm lượng nhẹ
+
+  let stopTimeout = null;
+
+  // Bật nhạc và tự tắt sau 1 phút
+  function startMusic() {
+    audio.play().catch(()=>{}); // nếu trình duyệt chặn autoplay
+    btn.textContent = 'Tắt nhạc';
+    if(stopTimeout) clearTimeout(stopTimeout);
+    stopTimeout = setTimeout(() => {
+      audio.pause();
+      btn.textContent = 'Bật nhạc';
+    }, 60000);
+  }
+
+  // Tắt nhạc
+  function stopMusic() {
+    audio.pause();
+    if(stopTimeout) { clearTimeout(stopTimeout); stopTimeout = null; }
+    btn.textContent = 'Bật nhạc';
+  }
+
+  // Bật/tắt khi nhấn nút
+  btn.addEventListener('click', () => {
+    if(audio.paused) startMusic();
+    else stopMusic();
+  });
+
+  // Thử tự phát khi load trang
+  window.addEventListener('load', () => {
+    startMusic();
+  });
+</script>
+
 <style>
   body {
     margin: 0;
@@ -63,10 +121,12 @@
   }
 
   footer {
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
     color: rgba(255, 255, 255, 0.514);
     font-size: 0.9em;
+    text-align: center;
   }
 
   /* Meme bay */
@@ -90,24 +150,43 @@
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
   }
+
+  /* Pháo hoa */
+  .firework {
+    position: fixed;
+    bottom: 0;
+    width: 4px;
+    height: 40px;
+    background: radial-gradient(circle, #fff, transparent);
+    animation: fireworkUp 1.5s ease-out forwards;
+    z-index: 1000;
+  }
+  @keyframes fireworkUp {
+    0% { transform: translateY(0); opacity: 1; }
+    80% { transform: translateY(-80vh); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+
+  /* Hoa emoji */
+  @keyframes flowerUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
 </style>
 </head>
 <body>
 
-<h1>✨ 20/10 vui vẻ nha người đẹp  ✨</h1>
+<h1>✨ 20/10 vui vẻ nha người đẹp ✨</h1>
 
 <div class="meme-box" id="meme-box">
   <img id="meme-img" src="https://png.pngtree.com/png-clipart/20190617/original/pngtree-hand-painted-gift-box-cartoon-gift-box-gift-box-carton-png-image_3894008.jpg" alt="meme">
 </div>
 
-<div id="meme-text"> Hông có gì nhiều chỉ 1 chút ít sự cute thui 😘</div>
+<div id="meme-text">Hông có gì nhiều chỉ 1 chút ít sự cute thui 😘</div>
 
 <button id="btnGift">🎁 click nút này nhiệt tình dô nhá 🎁</button>
 
 <footer>💙 Gửi bởi <b>Hậu Đậu 😘😘</b> <b></b> 💙</footer>
-
-<!-- 🔇 Không còn nhạc nền mặc định -->
-<!-- <audio id="bgMusic" src="https://www.w3schools.com/html/horse.mp3" loop></audio> -->
 
 <script>
 const YOUR_NAME = "Hậu Đậu";
@@ -116,29 +195,23 @@ document.querySelector("footer b:first-child").textContent = YOUR_NAME;
 document.querySelector("footer b:last-child").textContent = CRUSH_NAME;
 
 const MEMES = [
-  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/481132729_617360261047866_6784680533306923938_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEhjXwVJlUlNPAL0j4rpdxIw0yHrkyqBfXDTIeuTKoF9SIvOJzmfX8JNk_r3sQlSenCqMCW7im6CS8cyxkU70oJ&_nc_ohc=yromYw2vcnIQ7kNvwG3szf3&_nc_oc=AdnCwNSX_c9rohdSic6BsyDxVJNWfkvG1EJKgenP-my9TaGERia25tynudCtkBHd8Mw&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=6UsFRBG7Q8gCdFqq0MqEvw&oh=00_Afes8REBmg1smd9vJd_gwPdxBgaIuamRx8DUfyyZIU2RGQ&oe=68FA988D",
-  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/481676750_617360297714529_5246868493535605927_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFFRNOk02Lkg1aRpKhsV3cUnmQwYD91alGeZDBgP3VqUWnPBKp3eHSacKMrKf0kzNqgxq3jpYPs9VrJiUFxLogC&_nc_ohc=IsiEw0PjvxQQ7kNvwF7ohyj&_nc_oc=AdlXOTadYrZfX28gLrjmK9vYxRdyYq1XhzXkObr2ohwAJQ0KJkMMKteDRTUojRj0Vwk&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=XSeyN-eBLRGDi6x1phyqww&oh=00_AfeoSzO15IwCLoeD-VD0ykvUQfkVTHI94ae5bG4lceo2sg&oe=68FACE74",
-  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/481262162_618017810982111_4427432798943403002_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHlnr5huOoVbPDQufMlISDGWWMKVwnByUpZYwpXCcHJSo1S2uqF7XW_zzB329crO4teUwKDxRxN56bCw3owqQ3B&_nc_ohc=bqaj5VSqFKQQ7kNvwHiVF2O&_nc_oc=AdkR4mUrYxssjOuPHNNtUGwbaepfLtAXHza6beUg7RXBvbQ2Z6mLMq18UPG2SjQWgoY&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=LtXNuT8UAKq-POyVgotJHA&oh=00_Aff4ujC4K98Zlm3-xEsWiOMdi5UERRV2nAL5xkEHvQGRyQ&oe=68FAC62B",
-  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/481987254_622045213912704_5812838612539502445_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFHdYrhjHmmK5T7Rk7bEeB6rXlFlvb3EIuteUWW9vcQi-DYftltSs5bF7z4WxzSk-OSeAuQhK75oqo7y9iLkEFH&_nc_ohc=vJLcRzRpObIQ7kNvwGUr37j&_nc_oc=Adm5C7DzIfBwWmtFFdfBoq8KBrNk1jVHLmiMGKIQEhQjkItRDKec70blr11C9F5UvQs&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=EGOGZQBuqCvVxeilii0uFA&oh=00_AfcU6SR6bXxgMJb03vSQro4nd-q71IADjRSRB3Sal0Tvrg&oe=68FAB5BE",
-  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/532671121_745093634941194_7325485569917431623_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFlpEJMGbDwg1b4w7zWlmmExSL28uyKlIPFIvby7IqUg7C8poCgYEpomXif-dKAwlQXxtH6E8ohlNSjAd7w1MHi&_nc_ohc=lFU0HZNkdtoQ7kNvwFbWQEX&_nc_oc=AdlyZ6ZyWaa1nJ4A4FV6GX9rgr4a_sxKvOjqGXn0YdP0Hg0fdbywTDFZO3iAliE9fB4&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=0Y545nhOY8p4awB3MeKUUg&oh=00_AfeIypq1T0kAZDL1k8xwIYrWuoNnmgLN6z5mWn-FOv0fBA&oe=68FAAD1A",
-  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/555551291_777451378372086_2351160732697479309_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEqHqL57pqv87_URIozHV8yDaxVxaG9wpINrFXFob3CknL9SFK9rGF0xSFmnLAY40b3SYOGlmo8OehJ82uUyowp&_nc_ohc=mBaBZ6CMkMUQ7kNvwHMSP1M&_nc_oc=Adl-KvqC9LGtifrX1qhG7Se8_-zwwFezyGaUprHiBPeojay26MSP7FvK7m-bpqvMcP0&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=g-lWRqlrPayBvj8Z0upOCQ&oh=00_Aff0o6t4MPjZqcExs_-9a5kSbUrwDr7UjD8a_RXLGfRJ5Q&oe=68FA9C78",
-  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/488768652_646140638169828_3370787654422686823_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGf3YwQID9MH8p3FwC3WSsQ2XAQ3dbUTRvZcBDd1tRNGygKLF9pqEn3KBvtHNhsxLrALvARDbL4Vq48I0LfjVkT&_nc_ohc=NRvTPomK0CQQ7kNvwFYxe5S&_nc_oc=AdmgVwVFlXsFLDduTCSnEJS6Hx-5oG1iOleavCsGfWBDBzBMz9tp0Y0Fg302xavq28s&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=ZMNJ6s4jkdPo5CAGO8wguA&oh=00_AffcqxHvinEsZE8v8sd9Y7azxbWIYEhnjkKOgnpTk3yMYQ&oe=68FAD084",
-  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/488711688_646141338169758_4019571971981158640_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG_ywEzUPVmtyJZACYEpvM8U0fUnz8HiO9TR9SfPweI74tp-Megg2Bcp6Ovp5DIomOvaI21QfKFpjSdRO3e-AEF&_nc_ohc=eVUZ95C3-KUQ7kNvwG0yL87&_nc_oc=AdlZYy5Reh0JTMjL6wOSXO9LZGBzZO6GeGJU8IFuJjslrc18CNL7ObKv_VfvGY6v2FE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=kaHg4D0WcOq1-5jBVFHDrQ&oh=00_AffCOACq_0qb0r3No3zmaV_-9XPfKFMMFQOpEg43f8UB8w&oe=68FA9C74"
+  "https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/481132729_617360261047866_6784680533306923938_n.jpg?...",
+  "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/481676750_617360297714529_5246868493535605927_n.jpg?...",
+  "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/481262162_618017810982111_4427432798943403002_n.jpg?..."
 ];
 const WISHES = [
   "Chúc em 20/10 rực rỡ, chill như gradient nền này 😎",
   "Mong ngày hôm nay của em sẽ thật xin sò nha 💙",
-  "hy vọng em sẽ luôn xinh xắn như đám mèo này nha 😆",
-  "20/10 anh không biết tặng gì hợp,chỉ biết viết cái web cùi bắp này thui 💫",
+  "Hy vọng em sẽ luôn xinh xắn như đám mèo này nha 😆",
+  "20/10 anh không biết tặng gì hợp, chỉ biết viết cái web cùi bắp này thui 💫",
   "Chúc em luôn vui, luôn đẹp nhá 😍",
   "Mỗi meme là một nụ cười, hy vọng em sẽ luôn cười tươi như mấy meme này 😝",
-  "Chúc em ngày 20/10 đáng nhớ — còn nhớ ai thì tùy em 😉  ",
-  "Chúc em luôn được trân trọng — không chỉ hôm nay mà là mỗi ngày.🥹"
+  "Chúc em ngày 20/10 đáng nhớ — còn nhớ ai thì tùy em 😉",
+  "Chúc em luôn được trân trọng — không chỉ hôm nay mà là mỗi ngày 🥹"
 ];
 const SOUNDS = [
-  "https://www.myinstants.com/media/sounds/cute-deer.mp3",
-  "https://www.myinstants.com/media/sounds/anime-wow.mp3",
-  "https://www.myinstants.com/en/instant/bruh/?utm_source=copy&utm_medium=share"
+  "https://www.myinstants.com/media/sounds/pop-sound-effect.mp3",
+  "https://www.myinstants.com/media/sounds/cartoon_jump.mp3"
 ];
 
 const img = document.getElementById("meme-img");
@@ -164,14 +237,39 @@ function createFloatingMeme() {
   setTimeout(()=>meme.remove(), 9000);
 }
 
+/* 🎆 Pháo hoa */
+function createFirework() {
+  const fw = document.createElement("div");
+  fw.className = "firework";
+  fw.style.left = Math.random() * 100 + "vw";
+  fw.style.backgroundColor = `hsl(${Math.random()*360},100%,70%)`;
+  document.body.appendChild(fw);
+  setTimeout(()=>fw.remove(), 1500);
+}
+
+/* 🌸 Hoa emoji */
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.textContent = "🌸";
+  flower.style.position = "fixed";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.top = "100vh";
+  flower.style.fontSize = Math.random() * 24 + 16 + "px";
+  flower.style.animation = "flowerUp 4s linear forwards";
+  document.body.appendChild(flower);
+  setTimeout(()=>flower.remove(), 4000);
+}
+
 document.getElementById("btnGift").addEventListener("click", ()=>{
   img.src = random(MEMES);
   text.textContent = random(WISHES);
   playRandomSound();
   createFloatingMeme();
+  for(let i=0;i<10;i++) setTimeout(createFlower, i*100);
 });
 
 setInterval(createFloatingMeme, 2500);
+setInterval(createFirework, 1200);
 </script>
 </body>
 </html>
