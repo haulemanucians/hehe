@@ -141,13 +141,13 @@
   .floating-meme {
     position: fixed;
     bottom: -100px;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 10px;
     overflow: hidden;
     z-index: 1000;
     animation: floatUp 8s linear forwards;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 4px rgba(0,0,0,0.2);
   }
   .floating-meme img {
     width: 100%;
@@ -241,7 +241,7 @@ function createFloatingMeme() {
   const meme = document.createElement("div");
    meme.className = "floating-meme"; 
    meme.style.left = Math.random() * 90 + "vw";
-    meme.style.animationDuration = (6 + Math.random() * 3) + "s"; 
+    meme.style.animationDuration = (6 + Math.random() * 1) + "s"; 
     const img = document.createElement("img"); 
     img.src = random(MEMES); 
     meme.appendChild(img); 
